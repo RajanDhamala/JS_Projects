@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-screen bg-gray-300 flex items-center justify-center flex-col ">
+    <h1 class="text-center md:text-center font-sans font-bold text-[30px] mt-5 text-black md:text-black md:text-[80px]">This is ur local time</h1>
+    <div class="flex justify-center">
+        <div class="hover:cursor-progress h-[40px] w-[100px] rounded-md border-2 enter bg-red-500 text-center pt-1 font-bold text-white hover:bg-red-600 md:h-[60px] md:w-[180px] md:text-[30px]"></div>
+    </div>
+</body>
+<script>
+    const locate=document.querySelector(".enter")
+    setInterval(function (){
+    const time=new Date()
+    const real=time.toLocaleTimeString();
+    locate.innerHTML=real
+    },1000)
+</script>
+</html>
