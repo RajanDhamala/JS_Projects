@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-screen flex justify-center items-center">
+    <div id="color-container">
+        <input type="color" class="color-picker h-[35px] w-[45px]">
+    </div>
+</body>
+<script>
+      const picker=document.querySelector(".color-picker")
+      picker.addEventListener("input",(event) =>{
+        document.body.style.backgroundColor=event.target.value
+      })
+</script>
+</html>
+
