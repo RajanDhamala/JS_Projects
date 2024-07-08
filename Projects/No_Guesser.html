@@ -20,7 +20,8 @@
         <div class="resultParas mt-2 mb-2">
             <p >Previous Guesses: <span class="guesses"></span></p></div>
             <p >Guesses Remaining: <span class="lastResult">10</span></p>
-            <p class="lowOrHi font-bold mt-3 pb-10 ddos">guessed</p>
+            <p class="lowOrHi font-bold mt-3 pb-3 ddos">guessed</p>
+            <button class="bg-green-500 rounded-md hover:bg-green-600 text-center px-2 py-[2px] font-semibold mb-5 Restart">Restart Game</button>
         </div>
       </form>
 </body>
@@ -31,6 +32,7 @@
     const GuessSlot=document.querySelector(".guesses");
     const RemainingGuess=document.querySelector(".lastResult");
     const LowOrHi=document.querySelector(".ddos");
+    const RestartGame=document.querySelector(".Restart")
     let PrevGuess=[]
     let NumGuess=1
     let playgame=true
@@ -40,6 +42,10 @@
             e.preventDefault();
             const guess=UserInput.value
             ValidateGuess(guess)
+        RestartGame.addEventListener("click",function(e){
+            e.preventDefault();
+            ResetGame()
+        })
         })}
     
 
@@ -61,7 +67,7 @@
             }
         }
         if(RemainingGuess.innerHTML==0){
-            alert("game over")
+            alert(`Game over ur random no was ${RandomNumber}`)
             EndGame()
         }
     }
@@ -86,7 +92,6 @@
         GuessSlot.innerHTML+=`${guess}  `
         RemainingGuess.innerHTML=`${RemainingGuess.innerHTML-1}`
     }
-
     function EndGame(){
         UserInput.value=""
         UserInput.disabled = true;
@@ -95,6 +100,7 @@
     function ResetGame(){
         RandomNumber=parseInt(Math.random()*100+1)
         PrevGuess=[]
+        UserInput.disabled = false;
         NumGuess=1
         GuessSlot.innerHTML=""
         RemainingGuess.innerHTML="10"
@@ -108,5 +114,6 @@
             ResetGame();
         }
     }
+    
 </script>
 </html>
