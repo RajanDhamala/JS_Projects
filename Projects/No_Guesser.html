@@ -20,7 +20,7 @@
         <div class="resultParas mt-2 mb-2">
             <p >Previous Guesses: <span class="guesses"></span></p></div>
             <p >Guesses Remaining: <span class="lastResult">10</span></p>
-            <p class="lowOrHi font-bold mt-3 pb-3 ddos">guessed</p>
+            <p class="lowOrHi font-bold mt-3 pb-3 ddos"></p>
             <button class="bg-green-500 rounded-md hover:bg-green-600 text-center px-2 py-[2px] font-semibold mb-3 Restart">Restart Game</button>
             <div class="h-[35px] font-semibold update"></div>
         </div>
@@ -70,7 +70,6 @@
         }
         if(RemainingGuess.innerHTML==0){
             DisplayMessage(`Game over ur random no was ${RandomNumber}`)
-            alert("your guess was correct")
             EndGame()
         }
     }
@@ -94,6 +93,7 @@
         UserInput.value=""
         GuessSlot.innerHTML+=`${guess}  `
         RemainingGuess.innerHTML=`${RemainingGuess.innerHTML-1}`
+        LowOrHi.innerHTML=`${guess}`
     }
     function EndGame(){
         UserInput.value=""
