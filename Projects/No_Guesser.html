@@ -21,7 +21,8 @@
             <p >Previous Guesses: <span class="guesses"></span></p></div>
             <p >Guesses Remaining: <span class="lastResult">10</span></p>
             <p class="lowOrHi font-bold mt-3 pb-3 ddos">guessed</p>
-            <button class="bg-green-500 rounded-md hover:bg-green-600 text-center px-2 py-[2px] font-semibold mb-5 Restart">Restart Game</button>
+            <button class="bg-green-500 rounded-md hover:bg-green-600 text-center px-2 py-[2px] font-semibold mb-3 Restart">Restart Game</button>
+            <div class="h-[35px] font-semibold update"></div>
         </div>
       </form>
 </body>
@@ -33,6 +34,7 @@
     const RemainingGuess=document.querySelector(".lastResult");
     const LowOrHi=document.querySelector(".ddos");
     const RestartGame=document.querySelector(".Restart")
+    const Update=document.querySelector(".update")
     let PrevGuess=[]
     let NumGuess=1
     let playgame=true
@@ -59,15 +61,16 @@
         }else{
             PrevGuess.push(guess)
             if (RemainingGuess<1){
-            DisplayGuess(`Game over the random no was ${guess}`)
+            DisplayMessage(`Game over the random no was ${guess}`)
             EndGame()
             }else{
-            DisplayMessage(guess)
+            CheckGuess(guess)
             DisplayGuess(guess)
             }
         }
         if(RemainingGuess.innerHTML==0){
-            alert(`Game over ur random no was ${RandomNumber}`)
+            DisplayMessage(`Game over ur random no was ${RandomNumber}`)
+            alert("your guess was correct")
             EndGame()
         }
     }
@@ -84,7 +87,7 @@
     }
 
     function DisplayMessage(Display){
-        LowOrHi.innerHTML=`<h2>${Display}</h2>`
+        Update.innerHTML=Display
     }
 
     function DisplayGuess(guess){
@@ -105,7 +108,7 @@
         GuessSlot.innerHTML=""
         RemainingGuess.innerHTML="10"
         LowOrHi.innerHTML=""
-        playgame=true
+        playgame=true;
         UserInput.value=""
 
     }
