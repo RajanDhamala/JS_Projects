@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#212121] text-[#fff] h-screen flex justify-center items-center">
+<div class="space-x-3">
+    <button class="bg-blue-500 hover:bg-blue-600 rounded-md border px-4 font-bold text-[20px] Start">Start</button>
+    <button class="bg-blue-500 hover:bg-blue-600 rounded-md border px-4 font-bold text-[20px] Stop">Stop</button>
+    <p class="text-[#212121] output mt-5">#generating</p>
+</div>
+</body>
+<script>
+    let Isrunning=false
+    let random="abc"
+    const RandomColor=()=>{
+    const hex="0123456789ABCDEF"
+    let color="#"
+    for(let i=0;i<6;i++){
+    random=color +=hex[Math.floor(Math.random()*16)]
+    }
+    return color;
+    }
+let Global
+    const StartChange=()=>{
+        if (!Isrunning){
+        Global=setInterval(()=>{
+            document.querySelector("body").style.backgroundColor=RandomColor()
+            update()
+        },2000)
+        Isrunning=true
+        }
+    }
+    const StopChange=()=>{
+        clearInterval(Global)
+        Isrunning=false
+    }
+    document.querySelector(".Start").addEventListener("click",(e)=>{
+        StartChange()
+    })
+    document.querySelector(".Stop").addEventListener("click",StopChange)
+    const update=()=>{
+        document.querySelector(".output").innerHTML=`HexValue: ${random}`
+        document.querySelector(".output").style.backgroundColor="white"
+    }
+</script>
+</html>
