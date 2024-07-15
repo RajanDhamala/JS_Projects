@@ -28,42 +28,36 @@
 </body>
 <script>
     const input=document.querySelector(".input")
-    const addbutton=document.querySelector(".addbutton");
-    addbutton.addEventListener("click",(e)=>{
-        e.preventDefault()
-        add()
+    const button=document.querySelector(".addbutton")
+
+    button.addEventListener("click",(e)=>{
+        e.preventDefault();
+        addtolist()
     })
 
-    function add(){
-        if(input.value==""){
-            alert("Please input the prompt")
-        }else{
-            const newelement=document.createElement('ul')
-            newelement.classList.add("bg-white","rounded","px-2","flex","justify-between","w-80","m-2","item-center")
 
-            const textnode=document.createElement('span');
-            textnode.textContent=input.value
-            textnode.classList.add("text-gray-700","text-lg")
+    function addtolist(){
+        const newelemnt=document.createElement("div")
+        newelemnt.style.backgroundColor="white"
+        newelemnt.classList.add("h-10","mt-4","w-[410px]","pl-5","flex","justify-between","item-center","rounded-md")
+        document.querySelector(".parent").appendChild(newelemnt)
 
-            const icon=document.createElement('i')
-            icon.classList.add("fa-solid","fa-trash","text-red-500","cursor-pointer","m-2")
+       const textinput=input.value.trim()
+       const text=document.createElement("span")
+       text.classList.add("w-96","rounded-md","text-start","mt-1","text-black","font-semibold","font-mono")
+       text.innerHTML=`${textinput}`
+       newelemnt.appendChild(text)
 
-            icon.setAttribute("aria-label","delete")
+       const icon=document.createElement("i")
+       icon.classList.add("fa-solid","fa-trash","text-red-500","mt-2","mr-3","cursor-pointer")
+       newelemnt.appendChild(icon)
 
-            newelement.appendChild(textnode)
-            newelement.appendChild(icon)
+       icon.addEventListener("click",(e)=>{
+        e.preventDefault()
+        newelemnt.remove()
+       })
 
-            document.querySelector(".parent").appendChild(newelement)
-
-            icon.addEventListener("click",(e)=>{
-                e.preventDefault();
-                newelement.remove()
-            })
-            input.value=""
-        }
+       input.value="";
     }
 </script>
-<style>
-
-</style>
 </html>
