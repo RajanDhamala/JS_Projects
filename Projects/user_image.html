@@ -32,7 +32,7 @@
             let imgElement = div.querySelector("img");
             if (!imgElement) {
                 imgElement = document.createElement("img");
-                imgElement.setAttribute("class", "h-30 w-30 rounded-md");
+                imgElement.setAttribute("class", "h-30 w-30 rounded-full");
                 div.appendChild(imgElement);
             }
             imgElement.setAttribute("src", data.avatar_url);
