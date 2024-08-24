@@ -32,7 +32,9 @@
 
     button.addEventListener("click",(e)=>{
         e.preventDefault();
-        addtolist()
+        if (document.querySelector('.input').value==''){
+        alert('please enter the todo')}
+        else{addtolist()}
     })
 
 
